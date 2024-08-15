@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 19:25:41 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/14 14:16:45 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/15 05:18:47 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,8 @@ void	ft_swap(char *a, char *b)
 	*b = tmp;
 }
 
-
-// we need to swap the player's position with the position above it
 void    up(t_data *data)
 {
-        // write(1, "up\n", 3);
-        // printf("before swap %d\t%d\n", data->x, data->y);
     if (data->map[data->y - 1][data->x] == '0')
     {
         ft_swap(&data->map[data->y][data->x], &data->map[data->y - 1][data->x]);
@@ -48,7 +44,7 @@ void    up(t_data *data)
     else if (data->map[data->y - 1][data->x] == 'E' && data->collectible == 0)
     {
         printf("You win!\n");
-        exit(0);
+        ft_free(data);
     }
 }
 
@@ -73,7 +69,7 @@ void    down(t_data *data)
     else if (data->map[data->y + 1][data->x] == 'E' && data->collectible == 0)
     {
         printf("You win!\n");
-        exit(0);
+        ft_free(data);
     }  
 }
 
@@ -98,7 +94,7 @@ void    right(t_data *data)
     else if (data->map[data->y][data->x + 1] == 'E' && data->collectible == 0)
     {
         printf("You win!\n");
-        exit(0);
+        ft_free(data);
     }
 }
 
@@ -123,6 +119,6 @@ void    left(t_data *data)
     else if (data->map[data->y][data->x - 1] == 'E' && data->collectible == 0)
     {
         printf("You win!\n");
-        exit(0);
+        ft_free(data);
     }
 }

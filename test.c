@@ -1,12 +1,14 @@
-#include <mlx.h>
+#include <stdio.h>
 
-int main()
-{
-    void *mlx;
-    void *win;
+int main() {
+    printf("Starting the program\n");
 
-    mlx = mlx_init();
-    win = mlx_new_window(mlx, 500, 500, "Hello, world!");
-    mlx_loop(mlx);
+    int value = 10;
+    printf("Value is %d\n", value);
+
+    // Add a flush to ensure output appears immediately
+    fflush(stdout);
+
+    printf("Ending the program\n");
     return 0;
 }

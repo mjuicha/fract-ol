@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 11:24:38 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/14 22:49:46 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/15 05:16:55 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,6 @@ void    render_img(t_data data, int x, int y)
     char *image;
     if (data.collectible == 0)
         data.exit = 1;
-    if (data.map[y] == NULL)
-    {
-        if (data.map[y] == NULL)
-            printf("Map[y] error\n%d\t%d\n", x, y);
-        exit(1);
-    }
     image = get_image(data.map[y][x], data.exit);
     if (image)
     {
@@ -72,7 +66,7 @@ void    render_img(t_data data, int x, int y)
         }
         else
         {
-            printf("Image not found\n");
+            printf("Error: Image is Invalid\n");
             exit(1);
         }
     }       
@@ -87,11 +81,6 @@ void render_image(t_data data)
     y = 0;
     
     data.img_size = 32;
-    if (data.map == NULL)
-    {
-        printf("Map error\n");
-        exit(1);
-    }
     while (data.map[y])
     {
         x = 0;
@@ -104,13 +93,20 @@ void render_image(t_data data)
     }
 }
 
+void    ft_free(t_data *data)
+{
+    free_map(data);
+    mlx_destroy_window(data->mlx, data->win);
+    exit(0);
+}
+
 int ftff(int key, void *param)
 {
     t_data *data;
 
     data = (t_data *)param;
     if (key == 53)
-        exit(0);
+        ft_free(data);
     else if (key == 13)
         up(data);
     else if (key == 1)
@@ -124,29 +120,41 @@ int ftff(int key, void *param)
     return (0);
 }
 
-int ft_close(t_data *data)
+
+
+int    ft_close(t_data *data)
 {
-    (void)data;
-    printf("by\n");
+    free_map(data);
+    mlx_destroy_window(data->mlx, data->win);
     exit(0);
-    return 0;
+    return (0);
 }
+
+void    ft_new_window(t_data *data)
+{
+    data->win = mlx_new_window(data->mlx, data->col * 32, data->row * 32, "so_long");
+    if (!data->win)
+    {
+        printf("Error: Unable to create MiniLibX window\n");
+        ft_close(data);
+        exit(1);
+    }
+    mlx_hook(data->win, 17, 0, ft_close, &data);
+}
+
 int main(int ac, char **av)
 {
     t_data data;
 
     if (ac != 2)
         return (1);
-    check_map(av[1], &data);
+    map_check_list(av[1], &data);
     data.mlx = mlx_init();
     if(!data.mlx)
-        exit(1);
-    data.win = mlx_new_window(data.mlx, 1920,1080, "so_long");
-    if (!data.win)
-        exit(1);
+        ft_error();
+    ft_new_window(&data);
     render_image(data);
     mlx_hook(data.win, 2, 0, *ftff, &data);
-    mlx_hook(data.win, 17, 0, ft_close, &data);
     mlx_loop(data.mlx);
     return (0);
 }

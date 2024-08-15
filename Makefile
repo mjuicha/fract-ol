@@ -5,7 +5,8 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 HEADER = so_long.h
 
-SRC = so_long.c move.c get_next_line.c get_next_line_utils.c check_map.c game_map.c \
+SRC = check_file.c   errors.c   map_check_list.c      move.c check_element.c \
+data_info.c gaaaaaa.c  get_next_line.c       get_next_line_utils.c map_check.c    so_long.c  utils.c \
 	
 OBJ = $(SRC:.c=.o)
 
@@ -17,7 +18,7 @@ NAME = so_long
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(MLXFLAGS) -o $@
+	$(CC) $(CFLAGS) $(OBJ) $(MLXFLAGS) -o $@
 
 clean:
 	rm -f $(OBJ)

@@ -22,7 +22,8 @@
         "tuple": "c",
         "unordered_map": "c",
         "utility": "c",
-        "vector": "c"
+        "vector": "c",
+        "so_long.h": "c"
     },
     "makefile.configureOnOpen": false
 }
