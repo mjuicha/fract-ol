@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 19:25:41 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/15 05:18:47 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/16 20:29:07 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,104 +21,90 @@ void	ft_swap(char *a, char *b)
 	*b = tmp;
 }
 
-void    up(t_data *data)
+void	up(t_data *data)
 {
-    if (data->map[data->y - 1][data->x] == '0')
-    {
-        ft_swap(&data->map[data->y][data->x], &data->map[data->y - 1][data->x]);
-        data->y--;
-        printf("your position now  is %d\t%d\n", data->x, data->y);
-    }
-    else if (data->map[data->y - 1][data->x] == '1')
-    {
-        printf("You can't move to %d\t%d\n", data->x, data->y - 1);
-    }
-    else if (data->map[data->y - 1][data->x] == 'C')
-    {
-        data->collectible--;
-        data->map[data->y - 1][data->x] = '0';
-        ft_swap(&data->map[data->y][data->x], &data->map[data->y - 1][data->x]);
-        data->y--;
-        printf("your position now  is %d\t%d\n", data->x, data->y);
-    }
-    else if (data->map[data->y - 1][data->x] == 'E' && data->collectible == 0)
-    {
-        printf("You win!\n");
-        ft_free(data);
-    }
+	if (data->map[data->py - 1][data->px] == '0')
+	{
+		ft_swap(&data->map[data->py][data->px], &data->map[data->py - 1][data->px]);
+		data->py--;
+		ft_printf("[MOVED UP]-[COUNT] > %d\n", ++data->mv_count);
+	}
+	else if (data->map[data->py - 1][data->px] == 'C')
+	{
+		data->collectible--;
+		data->map[data->py - 1][data->px] = '0';
+		ft_swap(&data->map[data->py][data->px], &data->map[data->py - 1][data->px]);
+		data->py--;
+	}
+	else if (data->map[data->py - 1][data->px] == 'E' && data->collectible == 0)
+	{
+		ft_printf("You win!\n");
+		ft_free(data);
+	}
 }
 
-void    down(t_data *data)
+void	down(t_data *data)
 {
-    if (data->map[data->y + 1][data->x] == '0')
-    {
-        ft_swap(&data->map[data->y][data->x], &data->map[data->y + 1][data->x]);
-        data->y++;
-        printf("your position now  is %d\t%d\n", data->x, data->y);
-
-    }
-    else if (data->map[data->y + 1][data->x] == 'C')
-    {
-        data->collectible--;
-        data->map[data->y + 1][data->x] = '0';
-        ft_swap(&data->map[data->y][data->x], &data->map[data->y + 1][data->x]);
-        data->y++;
-        printf("your position now  is %d\t%d\n", data->x, data->y);
-
-    }
-    else if (data->map[data->y + 1][data->x] == 'E' && data->collectible == 0)
-    {
-        printf("You win!\n");
-        ft_free(data);
-    }  
+	if (data->map[data->py + 1][data->px] == '0')
+	{
+		ft_swap(&data->map[data->py][data->px], &data->map[data->py + 1][data->px]);
+		data->py++;
+		ft_printf("[MOVED DOWN]-[COUNT] > %d\n", ++data->mv_count);
+	}
+	else if (data->map[data->py + 1][data->px] == 'C')
+	{
+		data->collectible--;
+		data->map[data->py + 1][data->px] = '0';
+		ft_swap(&data->map[data->py][data->px], &data->map[data->py + 1][data->px]);
+		data->py++;
+	}
+	else if (data->map[data->py + 1][data->px] == 'E' && data->collectible == 0)
+	{
+		ft_printf("You win!\n");
+		ft_free(data);
+	}
 }
 
-void    right(t_data *data)
+void	right(t_data *data)
 {
-    if (data->map[data->y][data->x + 1] == '0')
-    {
-        ft_swap(&data->map[data->y][data->x], &data->map[data->y][data->x + 1]);
-        data->x++;
-        printf("your position now  is %d\t%d\n", data->x, data->y);
-
-    }
-    else if (data->map[data->y][data->x + 1] == 'C')
-    {
-        data->collectible--;
-        data->map[data->y][data->x + 1] = '0';
-        ft_swap(&data->map[data->y][data->x], &data->map[data->y][data->x + 1]);
-        data->x++;
-        printf("your position now  is %d\t%d\n", data->x, data->y);
-
-    }
-    else if (data->map[data->y][data->x + 1] == 'E' && data->collectible == 0)
-    {
-        printf("You win!\n");
-        ft_free(data);
-    }
+	if (data->map[data->py][data->px + 1] == '0')
+	{
+		ft_swap(&data->map[data->py][data->px], &data->map[data->py][data->px + 1]);
+		data->px++;
+		ft_printf("[MOVED UP]-[RIGHT] > %d\n", ++data->mv_count);
+	}
+	else if (data->map[data->py][data->px + 1] == 'C')
+	{
+		data->collectible--;
+		data->map[data->py][data->px + 1] = '0';
+		ft_swap(&data->map[data->py][data->px], &data->map[data->py][data->px + 1]);
+		data->px++;
+	}
+	else if (data->map[data->py][data->px + 1] == 'E' && data->collectible == 0)
+	{
+		ft_printf("You win!\n");
+		ft_free(data);
+	}
 }
 
-void    left(t_data *data)
+void	left(t_data *data)
 {
-    if (data->map[data->y][data->x - 1] == '0')
-    {
-        ft_swap(&data->map[data->y][data->x], &data->map[data->y][data->x - 1]);
-        data->x--;
-        printf("your position now  is %d\t%d\n", data->x, data->y);
-
-    }
-    else if (data->map[data->y][data->x - 1] == 'C')
-    {
-        data->collectible--;
-        data->map[data->y][data->x - 1] = '0';
-        ft_swap(&data->map[data->y][data->x], &data->map[data->y][data->x - 1]);
-        data->x--;
-        printf("your position now  is %d\t%d\n", data->x, data->y);
-
-    }
-    else if (data->map[data->y][data->x - 1] == 'E' && data->collectible == 0)
-    {
-        printf("You win!\n");
-        ft_free(data);
-    }
+	if (data->map[data->py][data->px - 1] == '0')
+	{
+		ft_swap(&data->map[data->py][data->px], &data->map[data->py][data->px - 1]);
+		data->px--;
+		ft_printf("[MOVED LEFT]-[COUNT] > %d\n", ++data->mv_count);
+	}
+	else if (data->map[data->py][data->px - 1] == 'C')
+	{
+		data->collectible--;
+		data->map[data->py][data->px - 1] = '0';
+		ft_swap(&data->map[data->py][data->px], &data->map[data->py][data->px - 1]);
+		data->px--;
+	}
+	else if (data->map[data->py][data->px - 1] == 'E' && data->collectible == 0)
+	{
+		ft_printf("You win!\n");
+		ft_free(data);
+	}
 }
