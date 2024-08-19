@@ -6,11 +6,11 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 08:50:27 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/10 10:44:54 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 12:12:00 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 size_t	ft_strlen(char *s)
 {

@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 11:24:49 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/18 20:34:55 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 12:31:50 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 # include <unistd.h>
 # include <mlx.h>
 # include <fcntl.h>
-# include "get_next_line.h"
 # include "ft_printf/ft_printf.h"
-# include <stdio.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 typedef struct s_data
 {
@@ -40,6 +42,8 @@ typedef struct s_data
 void	print_map(char **map);
 int		check_coins_path(t_data *data);
 void	free_maps(char **map, int len);
+void	ft_free(t_data *data);
+void	free_map(t_data *data);
 void	up(t_data *data);
 void	copy_map(char **map, char **temp_map, int len);
 void	down(t_data *data);
@@ -62,6 +66,10 @@ void	err_rect(t_data *data);
 int		check_valid_path(t_data *data);
 void	err_valid_path(t_data *data);
 void	get_player_position(t_data *data);
+char	*ft_strchr(const char *str, int c);
+char	*get_next_line(int fd);
+char	*empty_str(void);
+char	*ft_strjoin(char *str, char *buffer);
 void	get_exit_position(t_data *data);
 void	get_collectibles(t_data *data);
 char	*ft_strdup(const char *s1);
@@ -69,5 +77,13 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	ft_error(void);
 void	error_free_map(t_data *data);
 void	ft_free(t_data *data);
+void	render_image(t_data data);
+void	render_img(t_data data, int x, int y);
+char	*get_image(char c, int exit);
+void	new_window(t_data *data);
+int		to_move(int key, void *param);
+int		check_char(t_data *data);
+void	check_exist(t_data *data);
+size_t	ft_strlen(char *s);
 
 #endif

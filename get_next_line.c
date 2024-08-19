@@ -6,11 +6,11 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 08:44:21 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/18 20:46:32 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 12:12:09 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "so_long.h"
 
 char	*read_line(int fd, char *str)
 {

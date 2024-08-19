@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 01:47:56 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/15 23:28:36 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 12:51:39 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	check_dir(char *av)
 	fd = open(av, O_DIRECTORY);
 	if (fd != -1)
 	{
-		ft_printf("Error: '%s' is a directory!\n", av);
+		ft_printf("Error\n'%s' is a directory!\n", av);
 		exit(1);
 	}
 	close(fd);
@@ -40,7 +40,7 @@ void	check_ext(char *av)
 	ind = ft_strcmp(av, ".ber");
 	if (ind)
 	{
-		ft_printf("Error: '%s' Invalid file extention.", s);
+		ft_printf("Error\n'%s' Invalid file extention.\n", s);
 		exit(1);
 	}
 }

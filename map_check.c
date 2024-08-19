@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 02:11:37 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/18 20:49:19 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 11:48:29 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,18 +106,4 @@ void	check_exist(t_data *data)
 		err_exit(data);
 	if (!exist_coins(data))
 		err_coins(data);
-}
-
-
-void	check_map(t_data *data)
-{
-	if (!check_char(data))
-		err_char(data);
-	if (!check_walls(data))
-		err_walls(data);
-	check_exist(data);
-	if (!check_rect(data))
-		err_rect(data);
-	if (!check_valid_path(data))
-		err_valid_path(data);
 }

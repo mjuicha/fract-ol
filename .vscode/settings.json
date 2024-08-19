@@ -23,7 +23,10 @@
         "unordered_map": "c",
         "utility": "c",
         "vector": "c",
-        "so_long.h": "c"
+        "so_long.h": "c",
+        "__functional_base": "c",
+        "ft_printf.h": "c",
+        "fcntl.h": "c"
     },
     "makefile.configureOnOpen": false
 }

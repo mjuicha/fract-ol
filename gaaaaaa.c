@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 01:52:08 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/15 23:29:02 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 12:52:55 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	game_map(char *map, t_data *data)
 	data->row = len_map(map);
 	if (data->row == 0)
 	{
-		ft_printf("'%s' is empty!\n", map);
+		ft_printf("Error\n'%s' is empty!\n", map);
 		exit(1);
 	}
 	data->map = fill_map(map, data->row);

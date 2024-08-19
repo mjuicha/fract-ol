@@ -8,8 +8,8 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 HEADER = so_long.h
 
-SRC = check_file.c   errors.c   map_check_list.c      move.c check_element.c \
-data_info.c gaaaaaa.c  get_next_line.c       get_next_line_utils.c map_check.c    so_long.c  utils.c \
+SRC = check_file.c   errors1.c  errors2.c ft_free.c  map_check_list.c   new_window.c to_move.c  moves.c check_element1.c \
+check_element2.c data_info.c gaaaaaa.c  get_next_line.c   render_image.c    get_next_line_utils.c map_check.c    so_long.c  utils.c \
 	
 OBJ = $(SRC:.c=.o)
 
@@ -27,11 +27,11 @@ $(PRINTF): $(HEADERPRINTF) ft_printf/*.c
 	@$(MAKE) -C ft_printf
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ)
 	@$(MAKE) clean -C ft_printf
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 	@$(MAKE) fclean -C ft_printf
 
 re: fclean all

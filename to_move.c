@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   to_move.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/05 11:24:38 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 11:38:26 by mjuicha          ###   ########.fr       */
+/*   Created: 2024/08/19 11:38:07 by mjuicha           #+#    #+#             */
+/*   Updated: 2024/08/19 11:38:31 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	l(void)
+int	to_move(int key, void *param)
 {
-	system("leaks so_long");
-}
+	t_data	*data;
 
-int	main(int ac, char **av)
-{
-	t_data	data;
-
-	if (ac != 2)
-		return (1);
-	map_check_list(av[1], &data);
-	data.mlx = mlx_init();
-	if (!data.mlx)
-		ft_error();
-	new_window(&data);
-	render_image(data);
-	mlx_hook(data.win, 2, 0, *to_move, &data);
-	mlx_loop(data.mlx);
+	data = (t_data *)param;
+	if (key == 53)
+		ft_free(data);
+	else if (key == 13)
+		up(data);
+	else if (key == 1)
+		down(data);
+	else if (key == 0)
+		left(data);
+	else if (key == 2)
+		right(data);
+	mlx_clear_window(data->mlx, data->win);
+	render_image(*data);
 	return (0);
 }
