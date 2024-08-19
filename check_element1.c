@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 02:34:20 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 11:59:21 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:51:12 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	get_player_pos(char **map, t_data *data, int *p_row, int *p_col)
 {
+	if (!map || !data)
+		return (0);
 	*p_row = 0;
 	while (*p_row < data->row && ft_strchr(map[*p_row], 'P') == 0)
 		(*p_row)++;
@@ -31,6 +33,8 @@ void	copy_map(char **map, char **temp_map, int len)
 {
 	int	i;
 
+	if (!map || !temp_map)
+		return ;
 	i = 0;
 	while (i < len)
 	{
@@ -40,8 +44,22 @@ void	copy_map(char **map, char **temp_map, int len)
 	temp_map[i] = NULL;
 }
 
-void	flood_fill(char **map, int y, int x)
+size_t	ft_tablen(char **tab)
 {
+	size_t	i;
+
+	if (!tab)
+		return (0);
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
+}
+
+void	flood_fill(char **map, size_t y, size_t x)
+{
+	if (!map || y < 0 || x < 0 || y >= ft_tablen(map) || x >= ft_strlen(map[y]))
+		return ;
 	if (map[y][x] == '1' || map[y][x] == 'X')
 		return ;
 	map[y][x] = 'X';
@@ -59,11 +77,12 @@ int	check_valid_path(t_data *data)
 	int		p_col;
 	int		i;
 
+	if (!data || !data->map)
+		return (0);
 	map = data->map;
 	if (!get_player_pos(map, data, &p_row, &p_col))
 		return (0);
-	temp_map = malloc(sizeof(char *) * (data->row + 1));
-	if (!temp_map)
+	if (!(temp_map = malloc(sizeof(char *) * (data->row + 1))))
 		return (0);
 	copy_map(map, temp_map, data->row);
 	flood_fill(temp_map, p_row, p_col);
@@ -74,6 +93,5 @@ int	check_valid_path(t_data *data)
 			return (free_maps(temp_map, data->row), 0);
 		i++;
 	}
-	free_maps(temp_map, data->row);
-	return (1);
+	return (free_maps(temp_map, data->row), 1);
 }

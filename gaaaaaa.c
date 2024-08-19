@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 01:52:08 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 12:52:55 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 17:54:23 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,11 @@ char	**fill_map(char *map, int len)
 
 void	game_map(char *map, t_data *data)
 {
+	if (map == NULL || data == NULL)
+    {
+        ft_printf("Error\nInvalid input!\n");
+        exit(1);
+    }
 	data->row = len_map(map);
 	if (data->row == 0)
 	{

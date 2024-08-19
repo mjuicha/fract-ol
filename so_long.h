@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 11:24:49 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 12:31:50 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:51:23 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ int		to_move(int key, void *param);
 int		check_char(t_data *data);
 void	check_exist(t_data *data);
 size_t	ft_strlen(char *s);
+size_t	ft_tablen(char **tab);
+
 
 #endif

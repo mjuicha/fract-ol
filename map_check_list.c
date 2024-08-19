@@ -6,14 +6,16 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 01:21:35 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 11:48:32 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 19:00:56 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	flood_fill_c(char **map, int y, int x)
+void	flood_fill_c(char **map, size_t y, size_t x)
 {
+	if (!map || y < 0 || x < 0 || y >= ft_tablen(map) || x >= ft_strlen(map[y]))
+		return ;
 	if (map[y][x] == '1' || map[y][x] == 'X' || map[y][x] == 'E')
 		return ;
 	map[y][x] = 'X';
@@ -28,8 +30,9 @@ int	check_coins_path(t_data *data)
 	char	**temp_map;
 	int		i;
 
-	temp_map = malloc(sizeof(char *) * data->row + 1);
-	if (!temp_map)
+	if (!data || !data->map)
+		return (0);
+	if (!(temp_map = malloc(sizeof(char *) * (data->row + 1))))
 		return (0);
 	copy_map(data->map, temp_map, data->row);
 	flood_fill_c(temp_map, data->py, data->px);
@@ -62,6 +65,11 @@ void	check_map(t_data *data)
 
 void	map_check_list(char *av, t_data *data)
 {
+	if (av == NULL || data == NULL)
+    {
+        ft_printf("Error\nInvalid input!\n");
+        exit(1);
+    }
 	file_check(av);
 	game_map(av, data);
 	check_map(data);

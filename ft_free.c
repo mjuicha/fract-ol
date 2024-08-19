@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:26:24 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 12:19:36 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 19:55:26 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	error_free_map(t_data *data)
 	int	i;
 
 	i = 0;
+	if (!data || !data->map)
+		exit(1);
 	while (data->map[i])
 	{
 		free(data->map[i]);
@@ -51,7 +53,9 @@ void	free_maps(char **map, int len)
 	int	i;
 
 	i = 0;
-	while (i < len)
+	if (!map)
+		return ;
+	while (map[i] && i < len)
 	{
 		free(map[i]);
 		i++;

@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 02:11:37 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 11:48:29 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:16:28 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_char(t_data *data)
 	int	j;
 
 	i = 0;
-	if (!data->map)
+	if (!data || !data->map)
 		return (0);
 	while (data->map[i])
 	{
@@ -56,7 +56,7 @@ int	exist(t_data *data, char r)
 
 	i = 0;
 	f = 0;
-	if (!data->map)
+	if (!data || !data->map)
 		return (0);
 	while (data->map[i])
 	{
@@ -82,7 +82,7 @@ int	exist_coins(t_data *data)
 
 	i = 0;
 	c = 0;
-	if (!data->map)
+	if (!data || !data->map)
 		return (0);
 	while (data->map[i])
 	{

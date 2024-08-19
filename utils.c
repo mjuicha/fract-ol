@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 03:14:57 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/15 04:10:10 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:34:41 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strdup(const char *s1)
 	char	*dest;
 
 	x = 0;
+	if (!s1)
+		return (NULL);
 	while (s1[x])
 		x++;
 	x++;

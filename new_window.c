@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:35:07 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 12:53:07 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 19:58:11 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 int	ft_close(t_data *data)
 {
 	free_map(data);
+	mlx_clear_window(data->mlx, data->win);
 	mlx_destroy_window(data->mlx, data->win);
+	free(data->mlx);
 	exit(0);
 	return (0);
 }

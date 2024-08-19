@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 01:47:56 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 12:51:39 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 17:50:53 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	check_dir(char *av)
 	if (fd != -1)
 	{
 		ft_printf("Error\n'%s' is a directory!\n", av);
+		close(fd);
 		exit(1);
 	}
-	close(fd);
 }
 
 void	check_ext(char *av)
@@ -31,12 +31,18 @@ void	check_ext(char *av)
 	int		ind;
 	char	*s;
 
+	if (av == NULL)
+	{
+		ft_printf("Error\nNo file name provided.\n");
+		exit(1);
+	}
 	ind = 0;
 	s = av;
 	len = ft_strlen(av);
 	if (len < 4)
 		ind = 1;
-	av = av + len - 4;
+	else
+		av = av + len - 4;
 	ind = ft_strcmp(av, ".ber");
 	if (ind)
 	{
@@ -57,6 +63,11 @@ void	check_fd(char *av)
 
 void	file_check(char *av)
 {
+	if (av == NULL)
+	{
+		ft_printf("Error\nNo map file provided.\n");
+		exit(1);
+	}
 	check_dir(av);
 	check_ext(av);
 	check_fd(av);

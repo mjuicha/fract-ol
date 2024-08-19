@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 08:50:27 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 12:12:00 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 18:38:49 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ size_t	ft_strlen(char *s)
 	size_t	i;
 
 	i = 0;
+	if (!s)
+		return (0);
 	while (s[i])
 		i++;
 	return (i);
@@ -37,6 +39,8 @@ char	*ft_strchr(const char *str, int c)
 {
 	int	x;
 
+	if (!str)
+		return (0);
 	x = 0;
 	while (str[x] != (char)c)
 	{
