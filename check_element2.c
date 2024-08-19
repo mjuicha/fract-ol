@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:51:54 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 18:17:10 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 20:29:10 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	check_walls(t_data *data)
 	int	j;
 
 	if (data == NULL || data->map == NULL)
-        return (0);
+		return (0);
 	i = 0;
 	data->col = ft_strlen(data->map[0]) - 1;
 	while (data->map[i] && i < data->row)

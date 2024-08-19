@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 02:34:20 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 18:51:12 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 20:28:51 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int	check_valid_path(t_data *data)
 	map = data->map;
 	if (!get_player_pos(map, data, &p_row, &p_col))
 		return (0);
-	if (!(temp_map = malloc(sizeof(char *) * (data->row + 1))))
+	temp_map = malloc(sizeof(char *) * (data->row + 1));
+	if (!temp_map)
 		return (0);
 	copy_map(map, temp_map, data->row);
 	flood_fill(temp_map, p_row, p_col);

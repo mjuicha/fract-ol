@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:32:42 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 20:25:26 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 20:27:32 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_image(char c, int exit)
 	out = NULL;
 	if (c == '1')
 		out = "textures/newwall.xpm";
-	 if (c == 'P')
+	if (c == 'P')
 		out = "textures/player.xpm";
 	else if (c == 'C')
 		out = "textures/money.xpm";

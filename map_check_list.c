@@ -6,7 +6,7 @@
 /*   By: mjuicha <mjuicha@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/15 01:21:35 by mjuicha           #+#    #+#             */
-/*   Updated: 2024/08/19 19:00:56 by mjuicha          ###   ########.fr       */
+/*   Updated: 2024/08/19 20:29:46 by mjuicha          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ int	check_coins_path(t_data *data)
 
 	if (!data || !data->map)
 		return (0);
-	if (!(temp_map = malloc(sizeof(char *) * (data->row + 1))))
+	temp_map = malloc(sizeof(char *) * (data->row + 1));
+	if (!temp_map)
 		return (0);
 	copy_map(data->map, temp_map, data->row);
 	flood_fill_c(temp_map, data->py, data->px);
@@ -66,10 +67,10 @@ void	check_map(t_data *data)
 void	map_check_list(char *av, t_data *data)
 {
 	if (av == NULL || data == NULL)
-    {
-        ft_printf("Error\nInvalid input!\n");
-        exit(1);
-    }
+	{
+		ft_printf("Error\nInvalid input!\n");
+		exit(1);
+	}
 	file_check(av);
 	game_map(av, data);
 	check_map(data);
